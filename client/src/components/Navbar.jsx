@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
 const Navbar = () => {
@@ -29,18 +30,12 @@ const Navbar = () => {
           </button>
         </div>
         <div className={`lg:flex lg:items-center ${isOpen ? 'block' : 'hidden'}`}>
-          <div className="hidden lg:block">
-            <input
-              type="text"
-              placeholder="Search"
-              className="border p-2 rounded-md"
-            />
-          </div>
+          
           <div to="/profile" className="text-white mx-2 my-1 hover:text-gray-300">
             <i className="fas fa-user"></i>
           </div>
           <div to="/cart" className="text-white mx-2 my-1 hover:text-gray-300">
-            <i className="fas fa-shopping-cart"></i>
+           <ShoppingCartIcon />
           </div>
         </div>
       </div>
