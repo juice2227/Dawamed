@@ -1,14 +1,29 @@
-import React ,{useState} from 'react'
-import Navbar from './components/Navbar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import Login from './pages/Login'
 
 
+import Registration from './pages/Registration'
 
-export default function App() {
+
+function App() {
   
   return (
-    <div>
-      <Navbar />
-      
-    </div>
+   <div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Registration />} />
+    </Routes>
+    
+    </BrowserRouter>
+   </div>
+    
+
+   
+    
+
   )
 }
+
+export default App
