@@ -4,6 +4,7 @@ import Login from './pages/Login'
 
 
 import Registration from './pages/Registration'
+import Navbar from './components/Navbar'
 
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
   return (
    <div>
     <BrowserRouter>
+    
     <Routes>
+      <Route path='/' element={<Navbar />} />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Registration />} />
     </Routes>

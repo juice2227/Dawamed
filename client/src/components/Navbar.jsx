@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Person2Icon from '@mui/icons-material/Person2';
 
 
 const Navbar = () => {
@@ -29,10 +31,13 @@ const Navbar = () => {
             <i className="fas fa-bars"></i>
           </button>
         </div>
+        <div className=''>
+            <LocationOnIcon />
+        </div>
         <div className={`lg:flex lg:items-center ${isOpen ? 'block' : 'hidden'}`}>
           
           <div to="/profile" className="text-white mx-2 my-1 hover:text-gray-300">
-            <i className="fas fa-user"></i>
+           <Person2Icon />
           </div>
           <div to="/cart" className="text-white mx-2 my-1 hover:text-gray-300">
            <ShoppingCartIcon />
