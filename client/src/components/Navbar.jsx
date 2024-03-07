@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import Person2Icon from '@mui/icons-material/Person2';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,15 +26,18 @@ const Navbar = () => {
             />
           </div>
         </div>
-        <div className="lg:hidden">
-          <button onClick={toggleNavbar} className="text-white focus:outline-none">
-            <i className="fas fa-bars"></i>
-          </button>
-        </div>
+        <div className="block">
+            Deliver to?
+            <LocationOnIcon />
+          </div>
+
         <div className={`lg:flex lg:items-center ${isOpen ? 'block' : 'hidden'}`}>
           
           <div to="/profile" className="text-white mx-2 my-1 hover:text-gray-300">
-            <i className="fas fa-user"></i>
+            <Person2Icon />
+          </div>
+          <div to="/profile" className="text-white mx-2 my-1 hover:text-gray-300">
+            <FavoriteIcon />
           </div>
           <div to="/cart" className="text-white mx-2 my-1 hover:text-gray-300">
            <ShoppingCartIcon />
