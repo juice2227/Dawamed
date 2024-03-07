@@ -22,7 +22,7 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="Search"
-              className="border p-2 rounded-md"
+              className="border p-2 rounded-md w-[40rem]"
             />
           </div>
         </div>
