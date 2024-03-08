@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
         )}
          {showCondition && (
-          <div className="bg-green-700 p-2 ml-[18.5rem]">
+          <div className="bg-green-700 p-2 ml-[18.5rem] w-[9rem]">
             <ul>
               <li>Eye care</li>
               <li>Ear care</li>
