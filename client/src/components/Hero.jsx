@@ -59,7 +59,7 @@ export default function Hero() {
       </section>
       <section className="flex">
       {showCategories && (
-          <div className="bg-green-700 p-2 ">
+          <div className="bg-green-500 p-2 text-white">
             <ul>
               <li>Medical Devices</li>
               <li>Snacks and Drinks</li>
@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
         )}
          {showCondition && (
-          <div className="bg-green-700 p-2 ml-[18.5rem] w-[9rem]">
+          <div className="bg-green-500 p-2 ml-[18.5rem] w-[9rem] text-white">
             <ul>
               <li>Eye care</li>
               <li>Ear care</li>
