@@ -31,7 +31,8 @@ const Navbar = () => {
             <i className="fas fa-bars"></i>
           </button>
         </div>
-        <div className=''>
+        <div className='bg-red-900 text-white w-[10rem]   rounded-md'>
+          <p>Deliver to ?</p>
             <LocationOnIcon />
         </div>
         <div className={`lg:flex lg:items-center ${isOpen ? 'block' : 'hidden'}`}>
