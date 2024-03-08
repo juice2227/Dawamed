@@ -2,7 +2,6 @@ const express  = require('express');
 const app = express();
 require('dotenv').config();
 const port = process.env.
-const uri = "mongodb+srv://myceline2227:<CMGaN7YJKXYf7a1c>@cluster0.jnqxgxp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 
 app.listen(port,()=>{
