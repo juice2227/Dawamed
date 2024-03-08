@@ -1,7 +1,8 @@
 const express  = require('express');
 const app = express();
 require('dotenv').config();
-const port = process.env.PORT
+const port = process.env.
+const uri = "mongodb+srv://myceline2227:<CMGaN7YJKXYf7a1c>@cluster0.jnqxgxp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 
 app.listen(port,()=>{
@@ -14,7 +15,7 @@ app.listen(port,()=>{
 const mongoose = require('mongoose');
 
 
-const mongoURI = 'mongodb://localhost:27017/DawaMed'; // Replace 'mydatabase' with your database nam
+const mongoURI = 'mongodb://localhost:27017/DawaMed'; 
 
 try{
     mongoose.connect(mongoURI, {
