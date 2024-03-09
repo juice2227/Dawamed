@@ -1,6 +1,9 @@
 const express  = require('express');
 const app = express();
 require('dotenv').config();
+<<<<<<< HEAD
+const port = process.env.
+=======
 const port = process.env.PORT
 const mongoose = require('mongoose')
 
@@ -18,8 +21,31 @@ async function connect() {
   }
   
   connect();
+>>>>>>> 82d1c40c8598b992f19fe88c8d6229b1598e28da
 
 
 app.listen(port,()=>{
     console.log(`Server listening to port ${port} `)
 })
+<<<<<<< HEAD
+
+
+
+
+const mongoose = require('mongoose');
+
+
+const mongoURI = 'mongodb://localhost:27017/DawaMed'; 
+
+try{
+    mongoose.connect(mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      })
+      console.log('MongoDB connected successfully');
+}
+    catch(error) {
+  console.error('MongoDB connection error:', err);
+};
+=======
+>>>>>>> 82d1c40c8598b992f19fe88c8d6229b1598e28da
