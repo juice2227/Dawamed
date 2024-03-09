@@ -11,7 +11,7 @@ const Footer = () => {
             <li>Over-the-Counter</li>
             <li>Vitamins & Supplements</li>
             <li>Personal Care</li>
-           
+           git 
           </ul>
         </div>
 

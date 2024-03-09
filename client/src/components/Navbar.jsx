@@ -42,7 +42,7 @@ const Navbar = () => {
           <p>Deliver to ?</p>
             <LocationOnIcon />
         </div>
-           {showModal && <Location showModal={showModal} />} 
+           {showModal && <Location handleClick={handleClick} />} 
         <div className={`lg:flex lg:items-center ${isOpen ? 'block' : 'hidden'}`}>
           
           <div to="/profile" className="text-white mx-2 my-1 hover:text-gray-300">
