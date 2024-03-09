@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Person2Icon from '@mui/icons-material/Person2';
 import Location from './modals/Location';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 const Navbar = () => {
@@ -26,11 +28,15 @@ const Navbar = () => {
             Your Logo
           </div>
           <div className="hidden lg:block">
-            <input
-              type="text"
-              placeholder="Search"
-              className="border p-2 rounded-md w-[40rem] outline-none  "
-            />
+           
+              <div className="relative">
+                  <input
+                  type="text"
+                  placeholder="Search"
+                  className="border p-2 pl-10 rounded-md w-[40rem]"
+                  />
+                  <SearchIcon className="absolute h-5 w-5 top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
+                    </div>
           </div>
         </div>
         <div className="lg:hidden">
