@@ -5,6 +5,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Person2Icon from '@mui/icons-material/Person2';
 import Location from './modals/Location';
 import SearchIcon from '@mui/icons-material/Search';
+import { createPortal } from "react-dom";
 
 
 const Navbar = () => {
@@ -14,10 +15,16 @@ const Navbar = () => {
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
-  const handleClick = ()=>{
-    setShowModal(!showModal)
+  // const handleClick = ()=>{
+  //   setShowModal(!showModal)
     
 
+  // }
+  const openModal = ()=>{
+    setShowModal(true)
+  }
+  const closeModal =()=>{
+    setShowModal(false)
   }
 
   return (
@@ -44,11 +51,11 @@ const Navbar = () => {
             <i className="fas fa-bars"></i>
           </button>
         </div>
-        <div className='bg-red-900 text-white w-[10rem]   rounded-md ' onClick={handleClick}>
+        <div className='bg-red-900 text-white w-[10rem]   rounded-md ' onClick={openModal}>
           <p>Deliver to ?</p>
             <LocationOnIcon />
         </div>
-           {showModal && <Location handleClick={handleClick} />} 
+           {showModal &&  createPortal(<Location  closeModal={closeModal} />,document.body)} 
         <div className={`lg:flex lg:items-center ${isOpen ? 'block' : 'hidden'}`}>
           
           <div to="/profile" className="text-white mx-2 my-1 hover:text-gray-300">
