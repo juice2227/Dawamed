@@ -16,10 +16,12 @@ const Registration = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
+    setLoading(true)
     axios
       .post("http://localhost:3000/register", {
         firstname,
@@ -31,9 +33,12 @@ const Registration = () => {
       .then((result) => {
         console.log(result);
         console.log(result.json)
+        setLoading(false);
         navigate("/login");
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>{ console.log(err)
+      setLoading(false)}
+      );
   };
 
   return (
@@ -99,8 +104,9 @@ const Registration = () => {
             className="bg-blue-500 w-[100%] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
             onClick={handleRegister}
+            disabled={loading} // Disable the button when loading
           >
-            Register
+           {loading ? "Registering..." : "Register"}
           </button>
         </div>
         <Link to="/login">Already have an account? Login here</Link>

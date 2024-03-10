@@ -6,11 +6,13 @@ import Person2Icon from '@mui/icons-material/Person2';
 import Location from './modals/Location';
 import SearchIcon from '@mui/icons-material/Search';
 import { createPortal } from "react-dom";
+import Profile from './modals/Profile';
 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false)
+  const [showProfileModal,setShowProfileModal] = useState(false)
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -40,7 +42,7 @@ const Navbar = () => {
                   <input
                   type="text"
                   placeholder="Search"
-                  className="border p-2 pl-10 rounded-md w-[40rem]"
+                  className="border p-3 pl-10 rounded-md w-[40rem]"
                   />
                   <SearchIcon className="absolute h-5 w-5 top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
                     </div>
@@ -57,10 +59,15 @@ const Navbar = () => {
         </div>
            {showModal &&  createPortal(<Location  closeModal={closeModal} />,document.body)} 
         <div className={`lg:flex lg:items-center ${isOpen ? 'block' : 'hidden'}`}>
-          
-          <div to="/profile" className="text-white mx-2 my-1 hover:text-gray-300">
+          <div className='block'>
+          <div  className="text-white mx-2 my-1 hover:text-red-900 relative " onClick={()=>setShowProfileModal(!showProfileModal)}>
            <Person2Icon />
           </div>
+          
+          <div>{showProfileModal && <div className='absolute top-10 ml-[-1rem]'> <Profile  /></div>}</div>
+          </div>
+          
+          
           <div to="/cart" className="text-white mx-2 my-1 hover:text-gray-300">
            <ShoppingCartIcon />
           </div>

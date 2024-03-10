@@ -9,17 +9,23 @@ import axios from 'axios'
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
 
   const handleLogin = (e) => {
     e.preventDefault();
     // Handle login logic
     e.preventDefault()
+    setLoading(true)
     axios.post("http://localhost:3000/login", { email, password })
     .then(result => {
         console.log(result)
+        
         if(result.data === "Success"){
+          setLoading(false)
+          
             navigate("/")
+            
         }else{
             navigate("/register")
             alert("You are not registered to this service")
@@ -63,7 +69,7 @@ const Login = () => {
             type="button"
             onClick={handleLogin}
           >
-            Sign In
+           {loading?'Signing in ...':'Sign in'} 
           </button>
         </div>
         <Link to="/register">Dont have an account? register here</Link>
