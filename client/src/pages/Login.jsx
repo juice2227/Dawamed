@@ -3,16 +3,32 @@ import React, { useState } from 'react';
 //import { HiOutlineMail, HiOutlineKey } from 'react-icons/hi';
 import emailIcon from '../images/email-icon.svg'; 
 import passwordIcon from '../images/password-icon.svg';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate()
 
   const handleLogin = (e) => {
     e.preventDefault();
     // Handle login logic
-    console.log('Logging in with:', { email, password });
+    e.preventDefault()
+    axios.post("http://localhost:3000/login", { email, password })
+    .then(result => {
+        console.log(result)
+        if(result.data === "Success"){
+            navigate("/")
+        }else{
+            navigate("/register")
+            alert("You are not registered to this service")
+
+        }
+   
+    })
+    .catch(err => console.log(err))
+    // console.log('Logging in with:', { email, password });
   };
 
   return (

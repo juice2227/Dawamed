@@ -1,28 +1,39 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
-import emailIcon from '../images/email-icon.svg'; 
-import passwordIcon from '../images/password-icon.svg';
-import { Link } from 'react-router-dom'; 
+import React, { useState } from "react";
+import emailIcon from "../images/email-icon.svg";
+import passwordIcon from "../images/password-icon.svg";
+import { Link } from "react-router-dom";
 //import { FaRegUserCircle } from "react-icons/fa";
-import userIcon from '../images/acc.png.png';
+import userIcon from "../images/acc.png.png";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Registration = () => {
   //const [firstName, setFirstname]= useState('');
   //const [secondname, setSecondname] = usestate('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname,setLastname] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert('Passwords do not match');
-      return;
-    }
-    
-    console.log('Registering with:', { email, password ,firstname, lastname });
+    axios
+      .post("http://localhost:3000/register", {
+        firstname,
+        lastname,
+        confirmPassword,
+        email,
+        password,
+      })
+      .then((result) => {
+        console.log(result);
+        console.log(result.json)
+        navigate("/login");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -31,10 +42,9 @@ const Registration = () => {
         <h2 className="text-center text-2xl mb-6">Register</h2>
         <div className="mb-4 flex items-center">
           {/* <img src={userIcon} alt="User Icon" className="w-6 h-6 mr-2" /> */}
-          
+
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="text"
             type="name"
             placeholder="firstname"
             value={firstname}
@@ -45,7 +55,6 @@ const Registration = () => {
           {/* <img src={userIcon} alt="User Icon" className="w-6 h-6 mr-2" /> */}
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="text"
             type="name"
             placeholder="lastname"
             value={lastname}
@@ -93,8 +102,6 @@ const Registration = () => {
           >
             Register
           </button>
-          
-
         </div>
         <Link to="/login">Already have an account? Login here</Link>
       </form>

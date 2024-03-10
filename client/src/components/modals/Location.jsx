@@ -1,4 +1,5 @@
-import React from 'react';
+
+import { useRef, useEffect } from "react";
 
 export default function Location({ closeModal }) {
   return (
