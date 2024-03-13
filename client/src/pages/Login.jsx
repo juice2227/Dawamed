@@ -10,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error,setError] = useState(false)
   const navigate = useNavigate()
 
   const handleLogin = (e) => {
@@ -27,7 +28,9 @@ const Login = () => {
             navigate("/")
             
         }else{
+          setError(true)
             navigate("/register")
+            
             alert("You are not registered to this service")
 
         }
@@ -70,6 +73,8 @@ const Login = () => {
             onClick={handleLogin}
           >
            {loading?'Signing in ...':'Sign in'} 
+           {error?<p className='text-red text-center'>You are not registered</p>:''}
+
           </button>
         </div>
         <Link to="/register">Dont have an account? register here</Link>

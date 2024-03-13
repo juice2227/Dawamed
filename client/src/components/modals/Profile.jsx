@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 export default function Profile() {
   return (
-    <div className="p-[1rem] ">
+    <div className="p-[1rem]  z-10">
       <ul className="">
         <li className="bg-red-900 text-white text-center">
           <Link to='/login'>Sign in</Link>

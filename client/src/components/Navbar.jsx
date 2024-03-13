@@ -70,7 +70,7 @@ const Navbar = () => {
         
           <div className="block">
             <div
-              className="text-red-900 mx-2 my-1 hover:text-red-900 relative "
+              className="text-red-900 mx-2 my-1 hover:text-gray-300 relative "
               onClick={() => setShowProfileModal(!showProfileModal)}
             >
               <AccountCircleIcon fontSize="large" />
