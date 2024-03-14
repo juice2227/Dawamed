@@ -18,7 +18,7 @@ const Login = () => {
     // Handle login logic
     e.preventDefault()
     setLoading(true)
-    axios.post("http://localhost:3000/login", { email, password })
+    axios.post("http://localhost:3000/api/login", { email, password })
     .then(result => {
         console.log(result)
         

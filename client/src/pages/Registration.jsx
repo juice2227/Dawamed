@@ -23,7 +23,7 @@ const Registration = () => {
     e.preventDefault();
     setLoading(true)
     axios
-      .post("http://localhost:3000/register", {
+      .post("http://localhost:3000/api/register", {
         firstname,
         lastname,
         confirmPassword,

@@ -27,7 +27,7 @@ export default function Offers() {
     <div className="grid grid-cols-4 gap-4  ">
       {offers.map((item) => {
         return (
-          <div key={item.id} className="border pl-[20%]"> 
+          <div key={item.id} className="border rounded-lg pl-[20%]"> 
             <div>
               <img src={item.image} />
             </div>
