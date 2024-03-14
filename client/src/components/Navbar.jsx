@@ -29,7 +29,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" p-4">
+    <nav className=" p-4 ml-[1rem] ">
       
         <div className="flex items-center justify-between">
           <div to="/" className=" text-lg font-bold mr-4">
