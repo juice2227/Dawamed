@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import AddIcon from '@mui/icons-material/Add';
 
-export default function AddToCart({closeModal}) {
+export default function AddToCart({closeModal,addToCart}) {
+  const [quantity,setQuantity] = useState(1)
+  const handleQuantityChange = (e) => {
+    setQuantity(parseInt(e.target.value)); // Parse input value to integer
+  };
+
+  const handleAddToCart = () => {
+    
+      addToCart({quantity: quantity });
+      // Reset input fields after adding to cart
+      setQuantity(1);
+    
+    
+  };
   return (
     <div className=' bg-white  fixed top-0 left-0 w-full h-full flex items-center justify-center'>
       <div className='bg-white w-96 p-8 rounded-md shadow-lg'>
@@ -16,11 +30,16 @@ export default function AddToCart({closeModal}) {
           <label className='block text-gray-700'>Quantity</label>
           <input
             type='text'
+            value={quantity}
+        onChange={handleQuantityChange}
             placeholder='1'
             className='w-full mt-1 p-2 border rounded-md outline-none'
           />
         </form>
-        <button className='bg-blue-500 rounded w-[100%] mt-[1rem] text-white p-2'>Add To cart</button>
+
+        <button onClick={handleAddToCart} className='bg-blue-500 rounded w-[100%] mt-[1rem] text-white p-2'> <span className='text-white'>
+           <AddIcon /> </span>Add To cart
+           </button>
         {/* <div className='flex justify-end mt-4'>
           <button
             onClick={closeModal}

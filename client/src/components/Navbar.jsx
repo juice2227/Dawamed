@@ -8,6 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { createPortal } from "react-dom";
 import Profile from "./modals/Profile";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,7 @@ const Navbar = () => {
     setShowModal(false);
   };
 
+  const navigate = useNavigate()
   return (
     <nav className=" p-4 ml-[1rem] ">
       
@@ -92,6 +94,7 @@ const Navbar = () => {
           <div
             to="/cart"
             className="text-red-900 mx-2 my-1 hover:text-gray-300"
+            onClick={()=>navigate('/cart')}
           >
             <ShoppingCartOutlinedIcon fontSize="large" />
           </div>
