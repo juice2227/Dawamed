@@ -9,8 +9,10 @@ import AddToCart from './modals/AddToCart';
 
 export default function Hero() {
   const [showAddToCartModal,setAddToCartModal] = useState(false)
-  const handleButtonClick = ()=>{
+  const [selectedMedicine,setSelectedMedicine] = useState(null)
+  const handleButtonClick = (medicine)=>{
     setAddToCartModal(true)
+    setSelectedMedicine(medicine)
   }
   const closeModal = ()=>{
     setAddToCartModal(false)
@@ -39,6 +41,24 @@ export default function Hero() {
       }
         // Add more medicine data as needed
       ];
+      // State to store the items in the cart
+  const [cartItems, setCartItems] = useState([]);
+
+  // Function to add an item to the cart
+  const addToCart = (medicine) => {
+    // Check if the medicine is already in the cart
+    const existingItem = cartItems.find(item => item.id === medicine.id);
+
+    if (existingItem) {
+      // If the medicine is already in the cart, increase its quantity
+      setCartItems(cartItems.map(item =>
+        item.id === medicine.id ? { ...item, quantity: item.quantity + 1 } : item
+      ));
+    } else {
+      // If the medicine is not in the cart, add it with quantity 1
+      setCartItems([...cartItems, { ...medicine, quantity: 1 }]);
+    }
+  };
   return (
     <div>
         

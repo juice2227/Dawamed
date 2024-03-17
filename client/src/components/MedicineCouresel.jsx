@@ -36,7 +36,7 @@ const MedicineCarousel = ({ medicineData,handleButtonClick }) => {
             />
             <h3 className="text-lg font-semibold">{medicine.name}</h3>
             <p className="text-gray-500">{medicine.description}</p>
-            <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded" onClick={handleButtonClick}>
+            <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded" onClick={()=>handleButtonClick(medicine)}>
               Buy Now
             </button>
           </div>

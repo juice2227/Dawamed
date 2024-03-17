@@ -1,17 +1,23 @@
 import React, { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add';
 
-export default function AddToCart({closeModal,addToCart}) {
+export default function AddToCart({closeModal}) {
   const [quantity,setQuantity] = useState(1)
+  const [showLoader,setShowloader] = useState(false)
   const handleQuantityChange = (e) => {
     setQuantity(parseInt(e.target.value)); // Parse input value to integer
   };
 
   const handleAddToCart = () => {
-    
-      addToCart({quantity: quantity });
+    setShowloader(true)
+    setTimeout(()=>{
+     
+      closeModal()
+    },2000)
+      
       // Reset input fields after adding to cart
-      setQuantity(1);
+    setQuantity(1);
+     ; // Close the modal after adding to cart
     
     
   };
@@ -38,7 +44,7 @@ export default function AddToCart({closeModal,addToCart}) {
         </form>
 
         <button onClick={handleAddToCart} className='bg-blue-500 rounded w-[100%] mt-[1rem] text-white p-2'> <span className='text-white'>
-           <AddIcon /> </span>Add To cart
+        {showLoader?'Adding to cart ...':<div> <AddIcon /> Add to Cart</div>  } </span> 
            </button>
         {/* <div className='flex justify-end mt-4'>
           <button
