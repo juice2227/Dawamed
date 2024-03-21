@@ -1,29 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductsMenu from "./ProductsMenu";
+import { CartContext } from "../context/Cart";
+import { useContext, useEffect, useState } from 'react'
 
 
 
 export default function ShoppingCart() {
-  // State to store the items in the cart
-  const [cartItems, setCartItems] = useState([]);
+  const {cartItems} = useContext(CartContext)
 
-  // Function to add an item to the cart
-  const addToCart = (medicine) => {
-    // Check if the medicine is already in the cart
-    const existingItem = cartItems.find(item => item.id === medicine.id);
-
-    if (existingItem) {
-      // If the medicine is already in the cart, increase its quantity
-      setCartItems(cartItems.map(item =>
-        item.id === medicine.id ? { ...item, quantity: item.quantity + 1 } : item
-      ));
-    } else {
-      // If the medicine is not in the cart, add it with quantity 1
-      setCartItems([...cartItems, { ...medicine, quantity: 1 }]);
-    }
-  };
 
   return (
     <div>
@@ -32,13 +18,14 @@ export default function ShoppingCart() {
       <div>
         <h1>Your Cart</h1>
         <p>Products</p>
-        <ul>
+        {cartItems.length <= 0?"Your cart is empty": <ul>
           {cartItems.map(item => (
             <li key={item.id}>
               {item.name} - Quantity: {item.quantity}
             </li>
           ))}
-        </ul>
+        </ul>}
+       
       </div>
       <div className="absolute bottom-0 w-full">
       <Footer />
