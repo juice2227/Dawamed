@@ -1,24 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AddIcon from '@mui/icons-material/Add';
+import { CartContext } from '../../context/Cart';
 
-export default function AddToCart({closeModal}) {
-  const [quantity,setQuantity] = useState(1)
+export default function AddToCart({closeModal,medicine}) {
+  const {addToCart} = useContext(CartContext)
   const [showLoader,setShowloader] = useState(false)
-  const handleQuantityChange = (e) => {
-    setQuantity(parseInt(e.target.value)); // Parse input value to integer
-  };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (medicine) => {
     setShowloader(true)
     setTimeout(()=>{
      
       closeModal()
     },2000)
-      
-      // Reset input fields after adding to cart
-    setQuantity(1);
-     ; // Close the modal after adding to cart
-    
+    // add to cart from context
+    addToCart(medicine)
     
   };
   return (
@@ -26,34 +21,18 @@ export default function AddToCart({closeModal}) {
       <div className='bg-white w-96 p-8 rounded-md shadow-lg'>
         <div className='bg-green-500 flex justify-between p-4 rounded-t-md'>
           <div>
-            <h1 className='text-white font-semibold'>Enter Quantity</h1>
+            <h1 className='text-white font-semibold'>Add to Cart</h1>
           </div>
           <div onClick={closeModal} className='cursor-pointer text-white'>
             x
           </div>
         </div>
-        <form className='mt-4'>
-          <label className='block text-gray-700'>Quantity</label>
-          <input
-            type='text'
-            value={quantity}
-        onChange={handleQuantityChange}
-            placeholder='1'
-            className='w-full mt-1 p-2 border rounded-md outline-none'
-          />
-        </form>
+        
 
-        <button onClick={handleAddToCart} className='bg-blue-500 rounded w-[100%] mt-[1rem] text-white p-2'> <span className='text-white'>
+        <button onClick={handleAddToCart(medicine)} className='bg-blue-500 rounded w-[100%] mt-[1rem] text-white p-2'> <span className='text-white'>
         {showLoader?'Adding to cart ...':<div> <AddIcon /> Add to Cart</div>  } </span> 
            </button>
-        {/* <div className='flex justify-end mt-4'>
-          <button
-            onClick={closeModal}
-            className='px-4 py-2 bg-green-500 text-white rounded-md'
-          >
-            Close
-          </button>
-        </div> */}
+        
       </div>
     </div>
   )

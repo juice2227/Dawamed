@@ -1,9 +1,20 @@
-import { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect } from 'react';
+import medicineData from '../data/ProductsData';
 
-export const CartContext = createContext()
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [])
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    } else {
+      setCartItems(medicineData);
+      localStorage.setItem("cartItems", JSON.stringify(medicineData));
+    }
+  }, []);
 
   const addToCart = (item) => {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -22,39 +33,22 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (item) => {
-    const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
-
-    if (isItemInCart.quantity === 1) {
-      setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
-    } else {
-      setCartItems(
-        cartItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity - 1 }
-            : cartItem
-        )
-      );
-    }
+    const updatedCartItems = cartItems.map((cartItem) =>
+      cartItem.id === item.id && cartItem.quantity > 1
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
+    setCartItems(updatedCartItems.filter((cartItem) => cartItem.id !== item.id));
   };
 
   const clearCart = () => {
     setCartItems([]);
+    localStorage.removeItem("cartItems");
   };
 
   const getCartTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
-
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  useEffect(() => {
-    const cartItems = localStorage.getItem("cartItems");
-    if (cartItems) {
-      setCartItems(JSON.parse(cartItems));
-    }
-  }, []);
 
   return (
     <CartContext.Provider

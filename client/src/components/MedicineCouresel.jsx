@@ -1,10 +1,12 @@
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
 import Slider from 'react-slick';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { CartContext } from '../context/Cart';
 
-const MedicineCarousel = ({ medicineData,handleButtonClick }) => {
+const MedicineCarousel = ({ medicineData,handleButtonClick,showStatusText }) => {
+  const {cartItems} = useContext(CartContext)
   const openModal = () => {
     setShowModal(true);
   };
@@ -25,7 +27,7 @@ const MedicineCarousel = ({ medicineData,handleButtonClick }) => {
 
   return (
     <Slider {...settings} className='overflow-y-hidden overflow-x-hidden pl-[1rem]' >
-      {medicineData.map((medicine, index) => (
+      {cartItems.map((medicine, index) => (
         <div key={index} className="p-4">
           {/* Medicine Card */}
           <div className=" rounded items-center shadow  w-[80%] pl-[20%] ">
@@ -37,7 +39,7 @@ const MedicineCarousel = ({ medicineData,handleButtonClick }) => {
             <h3 className="text-lg font-semibold">{medicine.name}</h3>
             <p className="text-gray-500">{medicine.description}</p>
             <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded" onClick={()=>handleButtonClick(medicine)}>
-              Buy Now
+            {showStatusText ?'Added to cart':'Buy now'}  
             </button>
           </div>
         </div>
