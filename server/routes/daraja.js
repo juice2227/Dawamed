@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+require('dotenv').config()
 
 router.post("/lipa",async (req, res) => {
     const phone = req.body.phone;
@@ -25,7 +26,7 @@ router.post("/lipa",async (req, res) => {
     // generate token
     const generateToken = async () => {
       const consumerKey = process.env.CONSUMER_KEY;
-      const consumerSecret = process.env.CONSUMER_SECRET;
+      const consumerSecret = process.env.SECRET_KEY;
       const url =
         "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"; //sandbox
       try {
