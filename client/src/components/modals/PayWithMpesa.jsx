@@ -4,11 +4,17 @@ import axios from 'axios'
 export default function PayWithMpesa({closeModal}) {
     const [phone, setPhone] = useState('')
     const [amount, setAmount] = useState('')
+    const [requestSend ,setRequestSend] = useState(false)
     const handlepayment =async (e)=>{
+        
         e.preventDefault()
+        setRequestSend(true)
         await axios.post('http://localhost:3000/api/lipa',{phone,amount}).then(
             (response)=>{
                 console.log(response)
+                setRequestSend(false)
+                // after sending request succesfully then close the modal
+                closeModal()
 
             }
         ).catch(
@@ -68,7 +74,7 @@ export default function PayWithMpesa({closeModal}) {
                 <div className="">
                   <button className="bg-green-900  text-white p-2 rounded w-[100%]" 
                   onClick={handlepayment}>
-                    Pay Now
+                  {requestSend?'processing ...':'Pay Now'}  
                   </button>
                 </div>
                 <button
