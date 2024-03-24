@@ -1,8 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-//import { HiOutlineMail, HiOutlineKey } from 'react-icons/hi';
-import emailIcon from '../images/email-icon.svg'; 
-import passwordIcon from '../images/password-icon.svg';
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios'
 

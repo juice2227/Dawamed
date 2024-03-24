@@ -2,8 +2,8 @@
 import React from 'react'
 import MedicineCouresel from './MedicineCouresel'
 import Offers from './Offers';
-import PhoneIcon from '@mui/icons-material/Phone';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+//import PhoneIcon from '@mui/icons-material/Phone';
+//import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ProductsMenu from './ProductsMenu';
 
 export default function Hero() {

@@ -3,12 +3,15 @@ import React, { useState } from 'react';
 import PhoneIcon from '@mui/icons-material/Phone';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ProgressBar from './ProgressBar';
+import ProgressBarOverlay from './ProgressOverlay';
 
 export default function ProductsMenu() {
   const [showProgressBar, setShowProgressBar] = useState(false);
+  const [showCarousel, setShowCarousel] = useState(true);
 
   const handlePrescriptionClick = () => {
-    setShowProgressBar(!showProgressBar);
+    setShowProgressBar(true);
+    setShowCarousel(false); // Hide the carousel when submitting prescription
   };
 
   return (
@@ -35,6 +38,7 @@ export default function ProductsMenu() {
         <PhoneIcon className="h-5 w-5" />
         <p>Contact</p>
       </div>
+      {showProgressBar && <ProgressBarOverlay />}
       <div></div>
     </section>
   );
