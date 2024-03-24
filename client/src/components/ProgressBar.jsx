@@ -69,7 +69,7 @@ const ProgressBar = () => {
           <div className="mt-6">
             {step === 1 && (
               <div>
-                <h3 className="text-lg font-semibold mb-4">
+                <h3 className="text-lg text-gray-900 font-semibold mb-4">
                   Step 1: Start
                 </h3>
                 <hr />
