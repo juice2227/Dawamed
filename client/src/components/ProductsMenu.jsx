@@ -15,6 +15,7 @@ export default function ProductsMenu() {
   };
 
   return (
+
     <section className='flex justify-between bg-green-600 text-white'> 
       <div className=' hover:bg-green-700 p-2 cursor-pointer'>
         <h1>Shop by Category</h1>
@@ -42,4 +43,5 @@ export default function ProductsMenu() {
       <div></div>
     </section>
   );
+
 }

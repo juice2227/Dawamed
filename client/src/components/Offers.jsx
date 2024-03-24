@@ -24,10 +24,10 @@ export default function Offers() {
     },
   ];
   return (
-    <div className="flex justify-between p-[2rem]">
+    <div className="grid grid-cols-4 gap-4  ">
       {offers.map((item) => {
         return (
-          <div key={item.id} className="border"> 
+          <div key={item.id} className="border rounded-lg pl-[20%]"> 
             <div>
               <img src={item.image} />
             </div>
