@@ -14,7 +14,10 @@ export default function PayWithMpesa({closeModal}) {
                 console.log(response)
                 setRequestSend(false)
                 // after sending request succesfully then close the modal
-                closeModal()
+                if(response.status === '200'){
+                    closeModal()
+                }
+                
 
             }
         ).catch(

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 require('dotenv').config()
-
+const axios = require('axios')
 router.post("/lipa",async (req, res) => {
     const phone = req.body.phone;
     const amount = req.body.amount;

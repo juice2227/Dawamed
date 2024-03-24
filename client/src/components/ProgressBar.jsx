@@ -73,15 +73,19 @@ const ProgressBar = () => {
                   Step 1: Start
                 </h3>
                 <hr />
-                <div className='font-semibold '>
-                  <p>Welcome to our site.
+                <div className='font-semibold  '>
+                  <p className='text-bold text-gray-900'>Welcome to our site.
                     We will take you through all steps required for the medicine prescription.</p>
-                    
+                    <div className='flex justify-between'>
+
+                      
                     <input type="file" onChange={handleFileChange} className='rounded bg-colour-blue text-green'/>
                     <button onClick={handleUpload} 
                       className='px-4 py-2  bg-blue-500 text-black rounded hover:bg-green-500'>
                       Upload
                     </button>
+                    </div>
+                    
                 </div>
                 
                             
