@@ -69,19 +69,23 @@ const ProgressBar = () => {
           <div className="mt-6">
             {step === 1 && (
               <div>
-                <h3 className="text-lg font-semibold mb-4">
+                <h3 className="text-lg text-gray-900 font-semibold mb-4">
                   Step 1: Start
                 </h3>
                 <hr />
-                <div className='font-semibold '>
-                  <p>Welcome to our site.
+                <div className='font-semibold  '>
+                  <p className='text-bold text-gray-900'>Welcome to our site.
                     We will take you through all steps required for the medicine prescription.</p>
-                    
+                    <div className='flex justify-between'>
+
+                      
                     <input type="file" onChange={handleFileChange} className='rounded bg-colour-blue text-green'/>
                     <button onClick={handleUpload} 
                       className='px-4 py-2  bg-blue-500 text-black rounded hover:bg-green-500'>
                       Upload
                     </button>
+                    </div>
+                    
                 </div>
                 
                             
@@ -94,18 +98,18 @@ const ProgressBar = () => {
               </div>
             )}
             {step === 2 && (
-              <div>
+              <div className='text-gray-900 '>
                 <h3 className="text-lg font-semibold mb-4">
                   Step 2: Upload Prescription
                 </h3>
                 
-                <h3 className='font-bold poppins'>Confirm Uploads</h3>
-                <h2 className='mt-3'>Select which option to use</h2>
+                <h3 className='font-bold poppins text-gray-900 '>Confirm Uploads</h3>
+                <h2 className='mt-3 text-gray-900 '>Select which option to use</h2>
                 <hr />
-                <p className='font-semibold'>In order to continue with the process provide us with the following information:</p>
+                <p className='font-semibold text-gray-900'>In order to continue with the process provide us with the following information:</p>
                 
-                <div className='relative'>
-                  <div className='absolute top-0 left-50 right-20'>
+                <div className='relative flex justify-between'>
+                  <div className='absolute top-0 left-50 right-20 '>
                     <div className='flex flex-col '>
                     <a href="./login" className='btn btn-sm  bg-gray-500 p-2 rounded mb-5'>Login</a>
                     <a href="./register" className='btn btn-sm  bg-blue-500 p-2 rounded '>Create Account</a>
@@ -131,7 +135,7 @@ const ProgressBar = () => {
               </div>
             )}
             {step === 3 &&  (
-              <div>
+              <div className='text-gray-900 '>
                 <h3 className="text-lg font-semibold mb-4">
                   Step 3: Recipient 
                 </h3>
@@ -141,7 +145,7 @@ const ProgressBar = () => {
                     <hr />
                   
                     <button
-                      className="btn btn-lg btn-block bg-blue-400 mt-0 py-2 px-4 rounded"
+                      className="btn btn-lg btn-block bg-blue-400 mt-0 py-2 px-4 rounded flex justify-between"
                       onClick = {() => setActiveForm('myself')}
                     >
                       Myself
@@ -176,7 +180,7 @@ const ProgressBar = () => {
                           </div>
                         </div>
                         <div className='relative'>
-                        <label htmlFor="">Gender</label>
+                        <label htmlFor="" className='text-gray-900 '>Gender</label>
                         <select name="" id="">
                           <option value="">select</option>
                           <option value="">Male</option>
@@ -185,7 +189,7 @@ const ProgressBar = () => {
 
                         </div>
                         <div>
-                        <p className='font-semibold'><label htmlFor="">Additional notes</label></p>
+                        <p className='font-semibold text-gray-900 '><label htmlFor="">Additional notes</label></p>
                        
                         <textarea className='border border-blue-500 text-blue' cols="40" rows="3" placeholder='add any additional instructions i.e medicine type'></textarea>
                         </div>
@@ -199,8 +203,8 @@ const ProgressBar = () => {
                   {activeForm == 'dependant' && (
                         
                     <div className='flex flex-col float-right mb-20 left-20'>
-                      <h4 className='font-semibold'>Details</h4>
-                      <label htmlFor="">Relationship</label>
+                      <h4 className='font-semibold text-gray-900 '>Details</h4>
+                      <label htmlFor="" className='text-gray-900 '>Relationship</label>
                       <select name="" id="">
                         <option value="">Select</option>
                         <option value="">Mother</option>
@@ -227,14 +231,14 @@ const ProgressBar = () => {
                             <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="lastname"/>
                           </div>
                       </div>
-                      <label htmlFor=""className='text-green'>Gender</label>
+                      <label htmlFor=""className='text-gray-900 '>Gender</label>
                       <select name="" id="">
                         <option value="">select</option>
                         <option value="">Male</option>
                         <option value="">Female</option>
                       </select>
                       <div>
-                      <p><label htmlFor="">Additional notes</label></p>
+                      <p><label htmlFor="" className='text-gray-900 '>Additional notes</label></p>
                       <textarea className='border border-blue-500 text-blue' cols="40" rows="3" placeholder='add any additional instructions i.e medicine type'></textarea>
                       </div>
                     
@@ -265,8 +269,8 @@ const ProgressBar = () => {
              
             {step === 4 && (
               <div>
-                <h3 className="text-lg font-semibold mb-4">Step 5: Complete</h3>
-                <p>Congratulations! Your process is complete.</p>
+                <h3 className="text-lg font-semibold mb-4 text-gray-900 ">Step 5: Complete</h3>
+                <p className='text-gray-900 '>Congratulations! Your process is complete.</p>
                 <Link to="/cart"><button className='px-4 py-2 bg-blue-500 text-white rounded mt-4'>Start shopping</button></Link>
                 
               </div>
