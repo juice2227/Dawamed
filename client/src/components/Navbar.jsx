@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -9,11 +9,12 @@ import { createPortal } from "react-dom";
 import Profile from "./modals/Profile";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
-
+import { CartContext } from "../context/Cart";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const {cartItems } = useContext(CartContext);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -96,7 +97,13 @@ const Navbar = () => {
             className="text-red-900 mx-2 my-1 hover:text-gray-300"
             onClick={()=>navigate('/cart')}
           >
+            {cartItems.length > 0 && (
+            <span className="absolute top-3 right-3 bg-red-500 text-white rounded-full w-4 h-4 flex justify-center items-center text-xs">
+              {cartItems.length}
+            </span>
+          )}
             <ShoppingCartOutlinedIcon fontSize="large" />
+            
           </div>
         </div>
       

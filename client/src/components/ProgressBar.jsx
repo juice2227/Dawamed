@@ -8,7 +8,7 @@ const ProgressBar = () => {
   //const [prescription, setPrescription] = useState('');
   //const [Recipient, setRecipient] = useState('');
   //const [PaymentInfo, setPaymentInfo] = useState('');
-  const [activeForm, setActiveForm] = useState('myself');
+  const [activeForm, setActiveForm] = useState('');
 
   const nextStep = () => {
     setStep(step + 1);
@@ -145,14 +145,14 @@ const ProgressBar = () => {
                     <hr />
                   
                     <button
-                      className="btn btn-lg btn-block bg-blue-400 mt-0 py-2 px-4 rounded flex justify-between"
+                      className="btn mt-[1rem] btn-lg btn-block bg-blue-400  py-2 px-4 rounded flex justify-between"
                       onClick = {() => setActiveForm('myself')}
                     >
                       Myself
                     </button>
 
                     <button
-                      className="btn btn-lg btn-block bg-blue-400 mt-2 py-2 px-4 rounded flex flex-col"
+                      className="btn btn-lg btn-block bg-blue-400 mt-2 py-2 px-4 rounded mb-[1rem] flex flex-col"
                       onClick = {() => setActiveForm('dependant')}
                     >
                       Dependant
