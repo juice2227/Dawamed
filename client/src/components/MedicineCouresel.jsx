@@ -8,8 +8,12 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { CartContext } from '../context/Cart';
 
-const MedicineCarousel = ({ medicineData,handleButtonClick,showStatusText }) => {
-  const {cartItems} = useContext(CartContext)
+const MedicineCarousel = ({handleButtonClick,showStatusText }) => {
+  const {cartItems,medicineData} = useContext(CartContext)
+  
+  const beautyAndSkin = medicineData[0].categoryData
+  
+
   const openModal = () => {
     setShowModal(true);
   };
@@ -30,7 +34,7 @@ const MedicineCarousel = ({ medicineData,handleButtonClick,showStatusText }) => 
 
   return (
     <Slider {...settings} className='overflow-y-hidden overflow-x-hidden pl-[1rem]' >
-      {cartItems.map((medicine, index) => (
+      {beautyAndSkin.map((medicine, index) => (
         <div key={index} className="p-4">
           {/* Medicine Card */}
           <div className=" rounded items-center shadow  w-[80%] pl-[20%] ">

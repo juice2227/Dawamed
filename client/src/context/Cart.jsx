@@ -2,19 +2,22 @@ import React, { createContext, useState, useEffect } from 'react';
 import medicineData from '../data/ProductsData';
 
 export const CartContext = createContext();
+console.log('medici',medicineData)
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
-    const storedCartItems = localStorage.getItem("cartItems");
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    } else {
-      setCartItems(medicineData);
-      localStorage.setItem("cartItems", JSON.stringify(medicineData));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedCartItems = localStorage.getItem("cartItems");
+  //   if (storedCartItems) {
+  //     setCartItems(JSON.parse(storedCartItems));
+  //   } else {
+  //     setCartItems(medicineData); // Set cartItems to medicineData if no items are in local storage
+  //     localStorage.setItem("cartItems", JSON.stringify(medicineData));
+  //   }
+  // }, []);
+  
+  console.log('context',cartItems)
 
   const addToCart = (item) => {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -58,6 +61,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         getCartTotal,
+        medicineData
       }}
     >
       {children}
