@@ -37,12 +37,12 @@ export default function Hero() {
         <section  style={{ overflowX: 'hidden' }} className='w-full  '>
             <MedicineCouresel   handleButtonClick={handleButtonClick} showStatusText={showStatusText}/>
         </section>
-        <h1 className='text-center justify-center items-center p-2'>Beauty And Skin</h1>
-        <section><BeautyAndSkin handleButtonClick={handleButtonClick} /></section>
+        <h1 className='text-center justify-center items-center p-2 text-3xl '>Beauty And Skin</h1>
+        <section><BeautyAndSkin handleButtonClick={handleButtonClick} showStatusText={showStatusText} /></section>
 
 
         <section>
-            <h1 className='text-center text-[2rem]'>Offers</h1>
+            <h1 className='text-center  text-3xl p-2 '>Offers</h1>
             <Offers />
         </section>
     </div>
