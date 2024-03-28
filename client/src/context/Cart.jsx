@@ -1,23 +1,12 @@
-import React, { createContext, useState, useEffect } from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { createContext, useState } from 'react';
 import medicineData from '../data/ProductsData';
 
+
 export const CartContext = createContext();
-console.log('medici',medicineData)
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-
-  // useEffect(() => {
-  //   const storedCartItems = localStorage.getItem("cartItems");
-  //   if (storedCartItems) {
-  //     setCartItems(JSON.parse(storedCartItems));
-  //   } else {
-  //     setCartItems(medicineData); // Set cartItems to medicineData if no items are in local storage
-  //     localStorage.setItem("cartItems", JSON.stringify(medicineData));
-  //   }
-  // }, []);
-  
-  console.log('context',cartItems)
 
   const addToCart = (item) => {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -53,6 +42,24 @@ export const CartProvider = ({ children }) => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
+  const increaseQuantity = (item) => {
+    setCartItems(
+      cartItems.map((cartItem) =>
+        cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+      )
+    );
+  };
+
+  const decreaseQuantity = (item) => {
+    setCartItems(
+      cartItems.map((cartItem) =>
+        cartItem.id === item.id && cartItem.quantity > 1
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      )
+    );
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -61,6 +68,8 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         getCartTotal,
+        increaseQuantity,
+        decreaseQuantity,
         medicineData
       }}
     >

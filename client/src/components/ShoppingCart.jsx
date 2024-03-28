@@ -1,4 +1,4 @@
-import React from "react";
+
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ProductsMenu from "./ProductsMenu";
@@ -6,10 +6,13 @@ import { CartContext } from "../context/Cart";
 import { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import PayWithMpesa from "./modals/PayWithMpesa";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export default function ShoppingCart() {
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
   const [showModal , setShowModal] = useState(false)
+  const { increaseQuantity, decreaseQuantity } = useContext(CartContext);
 const closeModal = ()=>{
   setShowModal(false)
 }
@@ -45,7 +48,7 @@ const closeModal = ()=>{
             {cartItems.map((item) => (
               <div key={item.id} className="flex justify-between border p-5">
                 <div className="border">
-                  <img src={item.image} className="object-cover" />
+                  <img src={item.image} className="object-cover"height={50} width={50}/>
                 </div>
                 <div>
                   <p>{item.quantity}</p>
@@ -57,6 +60,10 @@ const closeModal = ()=>{
                   >
                     remove from cart
                   </button>
+                </div>
+                <div >
+                  <button  className="p-2 rounded text-white bg-red-500" onClick={() => increaseQuantity(item)}><AddIcon/></button>
+                  <button className="p-2 rounded text-white bg-green-500" onClick={() => decreaseQuantity(item)}><RemoveIcon/></button>
                 </div>
               </div>
             ))}

@@ -1,10 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import emailIcon from "../images/email-icon.svg";
-import passwordIcon from "../images/password-icon.svg";
+
 import { Link } from "react-router-dom";
 //import { FaRegUserCircle } from "react-icons/fa";
-import userIcon from "../images/acc.png.png";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
