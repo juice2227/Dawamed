@@ -8,12 +8,11 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { CartContext } from '../context/Cart';
 
-const MedicineCarousel = ({handleButtonClick }) => {
+const MedicineCarousel = ({handleButtonClick,showStatusText }) => {
   const {cartItems,medicineData} = useContext(CartContext)
   
   const beautyAndSkin = medicineData[0].categoryData
-  const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
-  const showStatusText = isItemInCart ? true : false;
+  
   
 
   const openModal = () => {
